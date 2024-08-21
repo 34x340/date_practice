@@ -28,9 +28,34 @@
     // який виконується через певний час (наприклад, 2 секунди)
     //  і повертає повідомлення "Проміс виконано".
 
-const promise = new Promise ((resolve, reject) => { 
-    resolve(10)
+// const promise = new Promise ((resolve, reject) => { 
+//     resolve(10)
+// })
+// .then((massege) => {
+//     console.log(massege)
+// })
+
+// 2222222222222222222222222222222222222
+
+function arrayChecking (arr) {
+    const everyNum = arr.every((num) => {
+        return num % 2 === 0;
+    })
+}
+
+return new Promise((resolve, reject) => {
+    if(everyNum) {
+        resolve('correct')
+    }
+    else{
+        reject("no")
+    }
 })
-.then((massege) => {
-    console.log(massege)
+
+arrayChecking([2,4,5])
+.then((result) => {
+    console.log(result)
+})
+.catch((error)=> {
+    console.log(error)
 })
