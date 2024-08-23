@@ -37,25 +37,74 @@
 
 // 2222222222222222222222222222222222222
 
-function arrayChecking (arr) {
-    const everyNum = arr.every((num) => {
-        return num % 2 === 0;
-    })
-}
+// function arrayChecking (arr) {
+//     const everyNum = arr.every((num) => {
+//         return num % 2 === 0;
+//     })
+// }
 
-return new Promise((resolve, reject) => {
-    if(everyNum) {
-        resolve('correct')
+// return new Promise((resolve, reject) => {
+//     if(everyNum) {
+//         resolve('correct')
+//     }
+//     else{
+//         reject("no")
+//     }
+// })
+
+// arrayChecking([2,4,5])
+// .then((result) => {
+//     console.log(result)
+// })
+// .catch((error)=> {
+//     console.log(error)
+// })
+
+// 3333333333333333333333333333333333
+let isOpenModal = true
+
+const promise1 = new Promise ((resolve, reject) => {
+    if(isOpenModal) {
+        setTimeout(() => {
+            resolve('Promise1 виконався успішно')
+        }, 1000)
     }
     else{
-        reject("no")
+        reject('Promise1 Не виконався')
+    }
+}) 
+
+const promise2 = new Promise ((resolve, reject) => {
+    if(isOpenModal) {
+        setTimeout(() => {
+            resolve('Promise2 виконався успішно')
+        }, 2000)
+    }
+    else{
+        reject('Promise2 Не виконався')
     }
 })
 
-arrayChecking([2,4,5])
-.then((result) => {
-    console.log(result)
+const promise3 = new Promise ((resolve, reject) => {
+    if(isOpenModal) {
+        setTimeout(() => {
+            resolve('Promise3 виконався успішно')
+        }, 5000)
+    }
+    else{
+        reject('Promise3 Не виконався')
+    }
 })
-.catch((error)=> {
-    console.log(error)
+
+// Promise
+// console.dir(Promise)
+// Promise.all([promise1, promise2, promise3])
+// .then((response) => {
+//     console.log(response)
+// })
+// .catch(error=>console.log(error))
+
+Promise.race ([promise1, promise2, promise3])
+.then((first) => {
+    console.log(first);
 })
